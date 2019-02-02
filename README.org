@@ -19,9 +19,15 @@
     Downloaded music is storaged in =~/Downloads/music= Song saved as =songName.mp3= Playlist saved as =playlistID/songName.mp3= Like:
     [[./images/tree.png]]
 *** Usage
+    - Search song
+
+    =netease-dl-go search 生僻字=
+
+    =netease-dl-go s 生僻字 起风了=
+
     - Download song use id
 
-    =netease-dl-go d -s 554242032=
+    =netease-dl-go down -s 554242032=
 
     - Download song use url
 
@@ -33,4 +39,4 @@
 
     - Download the playlist use url
 
-    =netease-dl-go d -l https://music.163.com/#/my/m/music/playlist?id=115707002=
+    =netease-dl-go down -l https://music.163.com/#/my/m/music/playlist?id=115707002=

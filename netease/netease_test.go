@@ -47,3 +47,13 @@ func TestDownloadSongByPlaylist(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestSearchSong(t *testing.T) {
+	ret, err := SearchSong("生僻字")
+	if err != nil {
+		t.Error(err)
+	}
+	for _, v := range ret {
+		fmt.Printf("%+v\n", v)
+	}
+}

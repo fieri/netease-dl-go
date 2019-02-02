@@ -7,12 +7,14 @@ import (
 	"os"
 
 	"github.com/trytwice/netease-dl-go/basic"
+	"github.com/trytwice/netease-dl-go/model"
 	"github.com/trytwice/netease-dl-go/netease"
 	"github.com/urfave/cli"
 )
 
 var (
-	ids = []string{}
+	ids   = []string{}
+	names = []string{}
 )
 
 func main() {
@@ -59,6 +61,40 @@ func main() {
 						if err != nil {
 							return err
 						}
+					}
+				}
+				return nil
+			},
+		},
+		cli.Command{
+			Name:    "search",
+			Aliases: []string{"s"},
+			Usage:   "search song return atmost 10 results",
+			Before: func(c *cli.Context) error {
+				for i := 0; i < c.NArg(); i++ {
+					names = append(names, c.Args().Get(i))
+				}
+				return nil
+			},
+			Action: func(c *cli.Context) error {
+				if c.NArg() <= 0 {
+					return errors.New("arg error: no song to search")
+				}
+				for _, v := range names {
+					song, err := netease.SearchSong(v)
+					if err != nil {
+						return err
+					}
+					if len(song) == 0 {
+						return errors.New("opps: nothing finded")
+					}
+					for _, k := range song {
+						singers := ""
+						songurl := fmt.Sprintf(model.BaseURL, k.ID)
+						for _, s := range k.ArtistsName {
+							singers += s + " "
+						}
+						fmt.Printf("songID: %s song: %s singers: %s songURL: %s\n", k.ID, k.SongName, singers, songurl)
 					}
 				}
 				return nil

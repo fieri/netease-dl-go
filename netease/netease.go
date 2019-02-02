@@ -11,15 +11,9 @@ import (
 	"github.com/trytwice/netease-dl-go/model"
 )
 
-var (
-	baseURL     = "http://music.163.com/song/media/outer/url?id=%s"
-	playlistAPI = "http://music.163.com/api/playlist/detail/?id=%s&ids=[%s]"
-	songAPI     = "http://music.163.com/api/song/detail/?id=%s&ids=[%s]"
-)
-
 func getSongInfoByID(id string) (model.SongInfo, error) {
 	song := model.SongInfo{}
-	url := fmt.Sprintf(songAPI, id, id)
+	url := fmt.Sprintf(model.SongAPI, id, id)
 	resp, err := downloader.GetHTTPResponse(url)
 	if err != nil {
 		return song, err
@@ -48,7 +42,7 @@ func getSongNameByID(id string) (string, error) {
 }
 
 func getSongResp(id string) ([]byte, error) {
-	url := fmt.Sprintf(baseURL, id)
+	url := fmt.Sprintf(model.BaseURL, id)
 	resp, err := downloader.GetHTTPResponse(url)
 	if err != nil {
 		return nil, err
@@ -89,7 +83,7 @@ func saveSong(name string, song []byte) error {
 
 func getPlaylistInfoByID(id string) (model.PlaylistInfo, error) {
 	playlist := model.PlaylistInfo{}
-	url := fmt.Sprintf(playlistAPI, id, id)
+	url := fmt.Sprintf(model.PlaylistAPI, id, id)
 	resp, err := downloader.GetHTTPResponse(url)
 	if err != nil {
 		return playlist, err
@@ -119,4 +113,25 @@ func DownloadSongByPlaylist(id string) error {
 		_ = saveSong(id+"/"+name, resp)
 	}
 	return nil
+}
+
+// SearchSong search song info by given name, return 10 results.
+func SearchSong(name string) ([]model.SongInfo, error) {
+	result := []model.SongInfo{}
+	url := fmt.Sprintf(model.SearchAPI, name)
+	resp, err := downloader.GetHTTPResponse(url)
+	if err != nil {
+		return result, err
+	}
+	info := gjson.ParseBytes(resp).Get("result")
+	for _, v := range info.Get("songs").Array() {
+		song := model.SongInfo{}
+		song.ID = v.Get("id").String()
+		song.SongName = strings.TrimSpace(v.Get("name").String())
+		for _, k := range v.Get("artists").Array() {
+			song.ArtistsName = append(song.ArtistsName, k.Get("name").String())
+		}
+		result = append(result, song)
+	}
+	return result, nil
 }
