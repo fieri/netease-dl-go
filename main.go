@@ -71,6 +71,7 @@ EMAIL: dream@trytwice.me
 		}
 		return nil
 	}
+
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)

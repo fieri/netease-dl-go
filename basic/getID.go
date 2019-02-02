@@ -4,7 +4,7 @@ import "regexp"
 
 var idPattern = `id=(\d+)`
 
-// Get ID ...
+// GetID get song id or playlist id.
 func GetID(s string) string {
 	if len(s) < 20 {
 		return s

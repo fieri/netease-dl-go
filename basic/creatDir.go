@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"log"
 	"os"
 	"os/user"
 )
@@ -12,12 +13,14 @@ var (
 )
 
 func init() {
-	CreatDir(UserHomeDir + "/Downloads/music")
+	err := CreatDir(UserHomeDir + "/Downloads/music")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
-//CreatDir ...
+// CreatDir creat path or dir if it doesn't exists.
 func CreatDir(p string) error {
-	// filePath := UserHomeDir + p
 	if ok := IsExist(p); !ok {
 		err := os.Mkdir(p, 0755)
 		if err != nil {

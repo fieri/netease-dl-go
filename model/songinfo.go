@@ -1,6 +1,6 @@
 package model
 
-//SongInfo ...
+// SongInfo contains song info
 type SongInfo struct {
 	ID          string
 	SongName    string

@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// GetHTTPResponse get http response by url
 func GetHTTPResponse(url string) ([]byte, error) {
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {

@@ -56,6 +56,7 @@ func getSongResp(id string) ([]byte, error) {
 	return resp, nil
 }
 
+// DownloadSongByID download a song by id.
 func DownloadSongByID(id string) error {
 	resp, err := getSongResp(id)
 	if err != nil {
@@ -102,6 +103,7 @@ func getPlaylistInfoByID(id string) (model.PlaylistInfo, error) {
 	return playlist, nil
 }
 
+// DownloadSongByPlaylist download songs by playlist's id.
 func DownloadSongByPlaylist(id string) error {
 	err := basic.CreatDir(basic.FilePath + "/" + id)
 	if err != nil {
