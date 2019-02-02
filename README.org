@@ -1,7 +1,7 @@
 * netease-dl-go
   netease-dl-go is a cli based netease-cloud-music downloader.
 ** Installation
-   Make sure you have a working Go environment.Go version 1.9+ is supported.
+   Make sure you have a working Go environment.Go version 1.9+ is supported.Windows is not supported.
    To install cli, simply run:
 
    =go get github.com/trytwice/netease-dl-go=
@@ -9,3 +9,19 @@
    Then cd the $GOPATH/github.com/trytwice/netease-dl-go, run:
 
    =go install=
+** Getting Started
+*** Music Directory
+    Downloaded music is storaged in =~/Downloads/music=. Song saved as =songName.mp3=. Playlist saved as =playlistID/songName.mp3=. Like:
+
+├── 2618676816
+│   ├── 隔壁泰山-阿里郎.mp3
+└── 飞云之下-韩红-林俊杰.mp3
+*** Example
+    - netease-dl-go --down s 554242032     ;;Download the song which id = 554242032
+    - netease-dl-go --down s https://music.163.com/#/song?id=554242032    ;;Download the song which id = 554242032
+    - netease-dl-go --down s 554242032 531295576     ;;Download songs id = 554242032 & 531295576 etc.
+    - netease-dl-go -d s https://music.163.com/#/song?id=554242032 https://music.163.com/#/song?id=531295576    ;;Download songs id = 554242032 & 531295576
+    - netease-dl-go --down l  115707002    ;;Download the playlist which id = 115707002
+    - netease-dl-go -d l 115707002 6683129    ;;Download playlists id = 115707002 & 6683129
+    - netease-dl-go --down l https://music.163.com/#/my/m/music/playlist?id=115707002    ;;Download the playlist which id = 115707002
+    - netease-dl-go -d l https://music.163.com/#/my/m/music/playlist?id=115707002 https://music.163.com/#/my/m/music/playlist?id=6683129    ;;Download playlists id = 115707002 & 6683129
