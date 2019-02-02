@@ -1,19 +1,24 @@
 * netease-dl-go
   netease-dl-go is a cli based netease-cloud-music downloader.
 ** Installation
-   Make sure you have a working Go environment.Go version 1.9+ is supported.Windows is not supported.
-   To install cli, simply run:
+*** Supported platforms
+    netease-dl-go is tested on Linux. *May work on OS X, Windows is not supported.*
+    Make sure you have a working Go environment.Go version 1.9+ is supported.
+*** Using go get and go install
+    To install cli, simply run:
 
-   =go get github.com/trytwice/netease-dl-go=
+    =go get github.com/trytwice/netease-dl-go=
 
-   Then cd the $GOPATH/github.com/trytwice/netease-dl-go, run:
+    Then cd the $GOPATH/github.com/trytwice/netease-dl-go, run:
 
-   =go install=
+    =go install=
+
+    Make sure your PATH includes the $GOPATH/bin directory so your commands can be easily used.
 ** Getting Started
 *** Music Directory
     Downloaded music is storaged in =~/Downloads/music=. Song saved as =songName.mp3= Playlist saved as =playlistID/songName.mp3= Like:
     [[./images/tree.png]]
-*** Example
+*** Usage
     - Download the song which id = 554242032
 
     =netease-dl-go --down s 554242032=
