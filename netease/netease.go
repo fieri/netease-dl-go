@@ -6,16 +6,15 @@ import (
 	"strings"
 
 	"github.com/tidwall/gjson"
-	"github.com/trytwice/netease_dl/basic"
-	"github.com/trytwice/netease_dl/downloader"
-	"github.com/trytwice/netease_dl/model"
+	"github.com/trytwice/netease-dl-go/basic"
+	"github.com/trytwice/netease-dl-go/downloader"
+	"github.com/trytwice/netease-dl-go/model"
 )
 
 var (
 	baseURL     = "http://music.163.com/song/media/outer/url?id=%s"
 	playlistAPI = "http://music.163.com/api/playlist/detail/?id=%s&ids=[%s]"
 	songAPI     = "http://music.163.com/api/song/detail/?id=%s&ids=[%s]"
-	filePath    = basic.UserHomeDir + "/Downloads/music"
 )
 
 func getSongInfoByID(id string) (model.SongInfo, error) {
@@ -71,7 +70,7 @@ func downloadSongByID(id string) error {
 }
 
 func saveSong(name string, song []byte) error {
-	fileName := filePath + "/" + name + ".mp3"
+	fileName := basic.FilePath + "/" + name + ".mp3"
 	if ok := basic.IsExist(fileName); ok {
 		return nil
 	}
@@ -104,7 +103,7 @@ func getPlaylistInfoByID(id string) (model.PlaylistInfo, error) {
 }
 
 func downloadSongByPlaylist(id string) error {
-	err := basic.CreatDir(filePath + "/" + id)
+	err := basic.CreatDir(basic.FilePath + "/" + id)
 	if err != nil {
 		return err
 	}

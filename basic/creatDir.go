@@ -6,9 +6,14 @@ import (
 )
 
 var (
-	Usr, _      = user.Current()
-	UserHomeDir = Usr.HomeDir
+	usr, _      = user.Current()
+	UserHomeDir = usr.HomeDir
+	FilePath    = UserHomeDir + "/Downloads/music"
 )
+
+func init() {
+	CreatDir(UserHomeDir + "/Downloads/music")
+}
 
 //CreatDir ...
 func CreatDir(p string) error {
