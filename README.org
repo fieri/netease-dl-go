@@ -12,14 +12,7 @@
 ** Getting Started
 *** Music Directory
     Downloaded music is storaged in =~/Downloads/music=. Song saved as =songName.mp3=. Playlist saved as =playlistID/songName.mp3=. Like:
-
     [[./images/tree.png]]
-
-├── 2618676816
-
-│   ├── 隔壁泰山-阿里郎.mp3
-
-└── 飞云之下-韩红-林俊杰.mp3
 *** Example
     - netease-dl-go --down s 554242032     ;;Download the song which id = 554242032
     - netease-dl-go --down s https://music.163.com/#/song?id=554242032    ;;Download the song which id = 554242032
