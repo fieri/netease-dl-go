@@ -32,8 +32,8 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "download song or playlist",
 			Flags: []cli.Flag{
-				cli.BoolFlag{Name: "song, s"},
-				cli.BoolFlag{Name: "list, l"},
+				cli.BoolFlag{Name: "song, s", Usage: "download song"},
+				cli.BoolFlag{Name: "list, l", Usage: "download playlist"},
 			},
 			Before: func(c *cli.Context) error {
 				for i := 0; i < c.NArg(); i++ {
