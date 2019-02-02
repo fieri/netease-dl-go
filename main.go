@@ -21,10 +21,10 @@ func main() {
 			Name:  "down, d",
 			Usage: "Download song by url. s for song, l for playlist.",
 		},
-	}
-	cli.VersionFlag = cli.BoolFlag{
-		Name:  "version, V",
-		Usage: "print only the version",
+		cli.BoolFlag{
+			Name:  "version, V",
+			Usage: "print only the version",
+		},
 	}
 	cli.AppHelpTemplate = fmt.Sprintf(`%s
 
