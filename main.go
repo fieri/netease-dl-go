@@ -19,16 +19,12 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "netease-dl-go"
 	app.Usage = "A cli based netease-cloud-music downloader."
-	app.Version = "1.1.1"
+	app.Version = "1.2.1"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "down, d",
 			Usage: "Download song by url. s for song, l for playlist.",
 		},
-		// cli.BoolFlag{
-		// 	Name:  "version, V",
-		// 	Usage: "print only the version",
-		// },
 	}
 	app.Commands = []cli.Command{
 		cli.Command{
@@ -36,7 +32,6 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "download song or playlist",
 			Flags: []cli.Flag{
-				cli.BoolFlag{Name: "forever, forevvarr"},
 				cli.BoolFlag{Name: "song, s"},
 				cli.BoolFlag{Name: "list, l"},
 			},
@@ -49,10 +44,6 @@ func main() {
 			Action: func(c *cli.Context) error {
 				if c.NArg() <= 0 {
 					return errors.New("arg error: no url or id")
-				}
-				if c.Bool("forever") {
-					// fmt.Println(c.Command.FullName())
-					fmt.Println(c.Command.Names())
 				}
 				if c.Bool("song") {
 					for _, v := range ids {
