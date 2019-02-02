@@ -27,26 +27,10 @@
 
     =netease-dl-go d -s https://music.163.com/#/song?id=554242032=
 
-    - Download songs use ids
-
-    =netease-dl-go d -s 554242032 531295576=
-
-    - Download songs use urls
-
-    =netease-dl-go d -s https://music.163.com/#/song?id=554242032 https://music.163.com/#/song?id=531295576=
-
     - Download playlist use id
 
     =netease-dl-go d -l  115707002=
 
-    - Download playlists use ids
-
-    =netease-dl-go d -l 115707002 6683129=
-
     - Download the playlist use url
 
     =netease-dl-go d -l https://music.163.com/#/my/m/music/playlist?id=115707002=
-
-    - Download playlists use urls
-
-    =netease-dl-go d -l https://music.163.com/#/my/m/music/playlist?id=115707002 https://music.163.com/#/my/m/music/playlist?id=6683129=
