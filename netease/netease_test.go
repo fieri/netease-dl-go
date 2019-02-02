@@ -35,14 +35,14 @@ func TestGetPlaylistInfoByID(t *testing.T) {
 }
 
 func TestDownloadSongByID(t *testing.T) {
-	err := downloadSongByID(id)
+	err := DownloadSongByID(id)
 	if err != nil {
 		t.Error(err)
 	}
 }
 
 func TestDownloadSongByPlaylist(t *testing.T) {
-	err := downloadSongByPlaylist(pid)
+	err := DownloadSongByPlaylist(pid)
 	if err != nil {
 		t.Error(err)
 	}

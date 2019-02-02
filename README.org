@@ -1,1 +1,8 @@
-** to be done
+* netease-dl-go
+  netease-dl-go is a cli based netease-cloud-music downloader.
+** Installation
+   Make sure you have a working Go environment.Go version 1.9+ is supported.
+   To install cli, simply run:
+   =go get github.com/trytwice/netease-dl-go=
+   Then cd the $GOPATH/github.com/trytwice/netease-dl-go, run:
+   =go install=
