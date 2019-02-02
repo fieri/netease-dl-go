@@ -13,6 +13,8 @@
 *** Music Directory
     Downloaded music is storaged in =~/Downloads/music=. Song saved as =songName.mp3=. Playlist saved as =playlistID/songName.mp3=. Like:
 
+    [[./images/tree.png]]
+
 ├── 2618676816
 
 │   ├── 隔壁泰山-阿里郎.mp3
