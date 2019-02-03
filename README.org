@@ -9,14 +9,14 @@
 
     =go get github.com/trytwice/netease-dl-go=
 
-    Then cd the $GOPATH/github.com/trytwice/netease-dl-go, run:
+    Then cd the $GOPATH/src/github.com/trytwice/netease-dl-go, run:
 
     =go install=
 
     Make sure your PATH includes the $GOPATH/bin directory so your commands can be easily used.
 ** Getting Started
 *** Music Directory
-    Downloaded music is storaged in =~/Downloads/music= Song saved as =songName.mp3= Playlist saved as =playlistID/songName.mp3= Like:
+    Downloaded music is storaged in =~/Downloads/music= Song is saved as =songName.mp3= Playlist is saved as =playlistID/songName.mp3= Like:
     [[./images/tree.png]]
 *** Usage
     - Search song
