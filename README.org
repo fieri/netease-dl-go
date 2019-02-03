@@ -37,6 +37,10 @@
 
     =netease-dl-go d -l  115707002=
 
+    - Download playlist use id and use go currency, faster than use -l
+
+    =netease-dl-go d -lc  115707002=
+
     - Download the playlist use url
 
     =netease-dl-go down -l https://music.163.com/#/my/m/music/playlist?id=115707002=

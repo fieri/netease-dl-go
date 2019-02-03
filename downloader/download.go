@@ -13,6 +13,7 @@ func GetHTTPResponse(url string) ([]byte, error) {
 		return nil, err
 	}
 	request.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
+	request.Header.Add("Origin", "https://music.163.com")
 	client := http.DefaultClient
 	response, err := client.Do(request)
 	if err != nil {

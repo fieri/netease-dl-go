@@ -36,6 +36,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.BoolFlag{Name: "song, s", Usage: "download song"},
 				cli.BoolFlag{Name: "list, l", Usage: "download playlist"},
+				cli.BoolFlag{Name: "listcur,lc", Usage: "download playlist use go currency, faster than list flage"},
 			},
 			Before: func(c *cli.Context) error {
 				for i := 0; i < c.NArg(); i++ {
@@ -58,6 +59,14 @@ func main() {
 				if c.Bool("list") {
 					for _, v := range ids {
 						err := netease.DownloadSongByPlaylist(v)
+						if err != nil {
+							return err
+						}
+					}
+				}
+				if c.Bool("listcur") {
+					for _, v := range ids {
+						err := netease.DownloadSongByPlaylistCur(v)
 						if err != nil {
 							return err
 						}
@@ -104,11 +113,13 @@ func main() {
 	cli.AppHelpTemplate = fmt.Sprintf(`%s
 
 EXAMPLE:
+    netease-dl-go search 生僻字    ;;Search Song info, return atmost 10 results
     netease-dl-go down --song 554242032     ;;Download the song which id = 554242032
     netease-dl-go down -s https://music.163.com/#/song?id=554242032    ;;Download the song which id = 554242032
     netease-dl-go d --song 554242032 531295576     ;;Download songs id = 554242032 & 531295576 etc.
     netease-dl-go d -s https://music.163.com/#/song?id=554242032 https://music.163.com/#/song?id=531295576    ;;Download songs id = 554242032 & 531295576
     netease-dl-go down --list  115707002    ;;Download the playlist which id = 115707002
+    netease-dl-go down --listcur  115707002    ;;Download the playlist which id = 115707002 use go currency, faster than --list
     netease-dl-go down -l 115707002 6683129    ;;Download playlists id = 115707002 & 6683129
     netease-dl-go d --list https://music.163.com/#/my/m/music/playlist?id=115707002    ;;Download the playlist which id = 115707002
     netease-dl-go d -l https://music.163.com/#/my/m/music/playlist?id=115707002 https://music.163.com/#/my/m/music/playlist?id=6683129    ;;Download playlists id = 115707002 & 6683129

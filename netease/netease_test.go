@@ -48,6 +48,13 @@ func TestDownloadSongByPlaylist(t *testing.T) {
 	}
 }
 
+func TestDownloadSongByPlaylistCur(t *testing.T) {
+	err := DownloadSongByPlaylistCur(pid)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func TestSearchSong(t *testing.T) {
 	ret, err := SearchSong("生僻字")
 	if err != nil {

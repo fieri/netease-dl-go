@@ -3,7 +3,9 @@ package netease
 import (
 	"fmt"
 	"os"
+	"runtime"
 	"strings"
+	"sync"
 
 	"github.com/tidwall/gjson"
 	"github.com/trytwice/netease-dl-go/basic"
@@ -113,6 +115,34 @@ func DownloadSongByPlaylist(id string) error {
 		_ = saveSong(id+"/"+name, resp)
 	}
 	return nil
+}
+
+var waitgroup sync.WaitGroup
+
+// DownloadSongByPlaylistCur download songs by playlist's id use go currency.
+func DownloadSongByPlaylistCur(id string) error {
+	err := basic.CreatDir(basic.FilePath + "/" + id)
+	if err != nil {
+		return err
+	}
+	pl, err := getPlaylistInfoByID(id)
+	if err != nil {
+		return err
+	}
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	for _, v := range pl.SongID {
+		waitgroup.Add(1)
+		go gao(v, id)
+	}
+	waitgroup.Wait()
+	return nil
+}
+
+func gao(songID, listID string) {
+	resp, _ := getSongResp(songID)
+	name, _ := getSongNameByID(songID)
+	_ = saveSong(listID+"/"+name, resp)
+	waitgroup.Done()
 }
 
 // SearchSong search song info by given name, return 10 results.
