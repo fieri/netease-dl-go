@@ -5,7 +5,7 @@
     netease-dl-go is tested on Linux. *May work on OS X, Windows is not supported.*
     Make sure you have a working Go environment.Go version 1.9+ is supported.
 *** Using go get and go install
-    To install cli, simply run:
+    To install, simply run:
 
     =go get github.com/trytwice/netease-dl-go=
 
